@@ -132,3 +132,6 @@ fabric.properties
 # Laravel IDE Helper package
 _ide_helper.php
 _ide_helper_models.php
+
+# More PHPStorm stuff
+.phpstorm.meta.php
