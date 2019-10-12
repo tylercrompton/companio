@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/laravel,composer,phpstorm
-# Edit at https://www.gitignore.io/?templates=laravel,composer,phpstorm
+# Created by https://www.gitignore.io/api/vagrant,laravel,composer,phpstorm
+# Edit at https://www.gitignore.io/?templates=vagrant,laravel,composer,phpstorm
 
 ### Composer ###
 composer.phar
@@ -117,5 +117,15 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
-# End of https://www.gitignore.io/api/laravel,composer,phpstorm
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
+# End of https://www.gitignore.io/api/vagrant,laravel,composer,phpstorm
 
