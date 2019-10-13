@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The companies that this user may access. This only applies to users with
+     * the "manager" role; he responsibility of ensuring that the pivot table
+     * never references a user without the "manager" role is yours.
+     */
+    public function companies()
+    {
+        return $this->belongsToMany('App\Company', 'company_manager');
+    }
 }
