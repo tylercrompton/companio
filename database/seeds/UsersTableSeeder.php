@@ -13,13 +13,13 @@ class UsersTableSeeder extends Seeder
     {
         App\User::insert([
             'name' => 'Administrator',
-            'role' => 'admin',
+            'role' => App\UserRole::admin,
             'email' => 'admin@site.com',
             'password' => Hash::make('password'),
         ]);
         App\User::insert([
             'name' => 'Manager',
-            'role' => 'manager',
+            'role' => App\UserRole::manager,
             'email' => 'manager@site.com',
             'password' => Hash::make('password'),
         ]);
