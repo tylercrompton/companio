@@ -2,43 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class CompanyEmployeeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Employee::class, 'employees');
+        $this->authorizeResource(Employee::class, 'companies.employees');
     }
 
     /**
      * Display a listing of the resource.
      *
+     * @param  Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Company $company)
     {
-        return view('employee.index', ['employees' => []]);
+        return view('employee.index', ['company' => $company, 'employees' => []]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param  Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Company $company)
     {
-        return view('employee.create');
+        return view('employee.create', ['company' => $company]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
+     * @param  Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Company $company)
     {
         //
     }
@@ -46,33 +50,36 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  Company  $company
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Company $company, Employee $employee)
     {
-        return view('employee.show', ['employee' => $employee]);
+        return view('employee.show', ['company' => $company, 'employee' => $employee]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  Company  $company
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(Company $company, Employee $employee)
     {
-        return view('employee.edit', ['employee' => $employee]);
+        return view('employee.edit', ['company' => $company, 'employee' => $employee]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
+     * @param  Company  $company
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Company $company, Employee $employee)
     {
         //
     }
@@ -80,10 +87,11 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  Company  $company
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Company $company, Employee $employee)
     {
         //
     }

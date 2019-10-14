@@ -7,7 +7,7 @@ use App\User;
 use App\UserRole;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EmployeePolicy
+class CompanyEmployeePolicy
 {
     use HandlesAuthorization;
 
