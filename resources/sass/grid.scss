@@ -1,0 +1,61 @@
+.grid {
+    display: grid;
+    grid-template-rows: auto;
+}
+@include media-breakpoint-down(xs) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+@include media-breakpoint-between(sm, md) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@include media-breakpoint-between(md, lg) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@include media-breakpoint-between(lg, xl) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@include media-breakpoint-up(xl) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@each $spacer-id, $spacer-size in $spacers {
+    .g-#{$spacer-id} {
+        grid-gap: $spacer-size;
+        gap: $spacer-size;
+    }
+    .gc-#{$spacer-id} {
+        grid-column-gap: $spacer-size;
+        column-gap: $spacer-size;
+    }
+    .gr-#{$spacer-id} {
+        grid-row-gap: $spacer-size;
+        row-gap: $spacer-size;
+    }
+}
+@each $breakpoint in map_keys(map_remove($grid-breakpoints, 'xs')) {
+    @include media-breakpoint-up($breakpoint) {
+        @each $spacer-id, $spacer-size in $spacers {
+            .g-#{$breakpoint}-#{$spacer-id} {
+                grid-gap: $spacer-size;
+                gap: $spacer-size;
+            }
+            .gc-#{$breakpoint}-#{$spacer-id} {
+                grid-column-gap: $spacer-size;
+                column-gap: $spacer-size;
+            }
+            .gr-#{$breakpoint}-#{$spacer-id} {
+                grid-row-gap: $spacer-size;
+                row-gap: $spacer-size;
+            }
+        }
+    }
+}

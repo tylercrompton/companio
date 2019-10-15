@@ -6,3 +6,21 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Grid-related rules
+@import 'grid';
+
+.x-ul {
+    padding-inline-start: 0;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.company-img {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}

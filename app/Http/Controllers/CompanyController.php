@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\UserRole;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -19,7 +20,13 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company.index', ['companies' => []]);
+        if (auth()->user()->role === UserRole::admin) {
+            $companies = Company::paginate(10);
+        } else {
+            $companies = auth()->user()->companies()->paginate(10);
+        }
+
+        return view('company.index', compact('companies'));
     }
 
     /**
