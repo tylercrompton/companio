@@ -40,7 +40,7 @@
                         @endcan
                         @can('viewAny', \App\User::class)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Managers') }}</a>
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
                             </li>
                         @endcan
                     </ul>
