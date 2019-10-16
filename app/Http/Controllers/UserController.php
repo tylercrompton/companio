@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(User::class, 'users');
+        $this->authorizeResource(User::class);
     }
 
     /**
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index', ['users' => []]);
+        return view('user.index', ['users' => User::paginate(10)]);
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', ['user' => $user]);
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -62,7 +62,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit', ['user' => $user]);
+        return view('user.edit', compact('user'));
     }
 
     /**

@@ -4,10 +4,10 @@
     <div class="d-flex justify-content-between align-items-start">
         <div>
             <h1>{{ __('Employees') }}</h1>
-            <p class="text-muted">{{ $company->name }}</p>
+            <h2 class="h4 text-muted">{{ $company->name }}</h2>
         </div>
         @can('create', \App\Employee::class)
-            <a href="{{ route('companies.employees.create', compact('company')) }}" class="btn btn-primary">{{ __('Add') }}</a>
+            <a href="{{ route('companies.employees.create', compact('company'), false) }}" class="btn btn-primary">{{ __('Add') }}</a>
         @endcan
     </div>
 

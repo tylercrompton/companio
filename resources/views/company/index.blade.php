@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-start">
-        <h1>Companies</h1>
+        <h1>{{ __('Companies') }}</h1>
         @can('create', \App\Company::class)
-            <a href="{{ route('companies.create') }}" class="btn btn-primary">Add</a>
+            <a href="{{ route('companies.create', [], false) }}" class="btn btn-primary">{{ __('Add') }}</a>
         @endcan
     </div>
 
     @if($companies->isEmpty())
-        <p class="container">No companies were found.</p>
+        <p class="container">{{ __('No companies were found.') }}</p>
     @else
         <ul class="list-unstyled grid g-3">
             @foreach($companies as $company)
