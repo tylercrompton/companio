@@ -58,7 +58,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return view('company.show', ['company' => $company]);
+        return view('company.show', compact('company'));
     }
 
     /**
@@ -69,7 +69,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('company.edit', ['company' => $company]);
+        return view('company.edit', compact('company'));
     }
 
     /**

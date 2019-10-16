@@ -37,7 +37,7 @@ class CompanyEmployeeController extends Controller
      */
     public function create(Company $company)
     {
-        return view('employee.create', ['company' => $company]);
+        return view('employee.create', compact('company'));
     }
 
     /**
@@ -61,7 +61,7 @@ class CompanyEmployeeController extends Controller
      */
     public function show(Company $company, Employee $employee)
     {
-        return view('employee.show', ['company' => $company, 'employee' => $employee]);
+        return view('employee.show', compact('company', 'employee'));
     }
 
     /**
@@ -73,7 +73,7 @@ class CompanyEmployeeController extends Controller
      */
     public function edit(Company $company, Employee $employee)
     {
-        return view('employee.edit', ['company' => $company, 'employee' => $employee]);
+        return view('employee.edit', compact('company', 'employee'));
     }
 
     /**
