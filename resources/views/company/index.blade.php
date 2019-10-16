@@ -17,7 +17,12 @@
                     <img class="card-img-top company-img align-self-center" src="/images/logo-default.png" alt="{{ $company->name }} logo">
                     <div class="card-body">
                         <p class="card-text">
-                            <a href="{{ route('companies.show', ['company' => $company->id], false) }}" class="stretched-link">{{ $company->name }}</a>
+                            {{-- We can probably assume that this condition will always be satisfied, but meh. --}}
+                            @can('view', $company)
+                                <a href="{{ route('companies.show', ['company' => $company->id], false) }}" class="stretched-link">{{ $company->name }}</a>
+                            @else
+                                {{ $company->name }}
+                            @endcan
                         </p>
                     </div>
                 </li>
