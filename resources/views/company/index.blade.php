@@ -14,7 +14,7 @@
         <ul class="list-unstyled grid g-3">
             @foreach($companies as $company)
                 <li class="card text-center">
-                    <img class="card-img-top company-img" src="/images/logo-default.png" alt="{{ $company->name }} logo">
+                    <img class="card-img-top company-img align-self-center" src="/images/logo-default.png" alt="{{ $company->name }} logo">
                     <div class="card-body">
                         <p class="card-text">
                             <a href="{{ route('companies.show', ['company' => $company->id], false) }}" class="stretched-link">{{ $company->name }}</a>
