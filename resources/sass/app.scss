@@ -20,3 +20,14 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.order--1 {
+    order: -1;
+}
+@each $breakpoint in map_keys(map_remove($grid-breakpoints, 'xs')) {
+    @include media-breakpoint-up($breakpoint) {
+        .order-#{$breakpoint}--1 {
+            order: -1;
+        }
+    }
+}

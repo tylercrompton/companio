@@ -10,7 +10,7 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Company::class, 'companies');
+        $this->authorizeResource(Company::class);
     }
 
     /**

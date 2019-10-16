@@ -10,7 +10,7 @@ class CompanyEmployeeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Employee::class, 'companies.employees');
+        $this->authorizeResource(Employee::class);
     }
 
     /**
@@ -21,7 +21,12 @@ class CompanyEmployeeController extends Controller
      */
     public function index(Company $company)
     {
-        return view('employee.index', ['company' => $company, 'employees' => []]);
+        return view(
+            'employee.index',
+            [
+                'company' => $company,
+                'employees' => $company->employees()->paginate(10),
+            ]);
     }
 
     /**
