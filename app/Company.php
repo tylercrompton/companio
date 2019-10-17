@@ -9,6 +9,13 @@ class Company extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'website',
+        'logo_path',
+    ];
+
     /**
      * Get the employees of this company.
      */

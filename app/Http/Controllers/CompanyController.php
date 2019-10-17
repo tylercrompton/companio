@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use App\UserRole;
 use Illuminate\Http\Request;
+
+use App\Company;
+use App\Http\Requests\StoreCompanyRequest;
+use App\UserRole;
 
 class CompanyController extends Controller
 {
@@ -42,12 +44,21 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreCompanyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCompanyRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $company = Company::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'website' => $validated['website'],
+            // TODO: logo
+        ]);
+
+        return redirect()->route('companies.show', compact('company'));
     }
 
     /**
