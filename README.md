@@ -11,7 +11,7 @@ Requirements
 - [ext-fileinfo][ext-fileinfo]
 - [Vagrant][vagrant]
 
-ext-fileinfo should come preinstalled with PHP. However, it's not enabled by default on Windows.
+ext-fileinfo should already be included with your PHP installation. However, it's not enabled by default on Windows.
 
 Technically, Vagrant isn't required, so if you feel compelled to avoid it, then you're of course welcome to run this application without it. However, the installation instructions assume that you will use it, so you'll need to significantly deviate from the instructions if that's not the case.
 
@@ -54,11 +54,11 @@ Then, create a configuration file by copying the `.env.example` file.
 
 Next, generate an application key as follows:
 
-    (ssh) $ ./artisan key:generate
+    (ssh) $ php artisan key:generate
 
 After that, run the migrations and seed the database.
 
-    (ssh) $ ./artisan migrate --seed
+    (ssh) $ php artisan migrate --seed
 
 After that, install the Node.js modules.
 
