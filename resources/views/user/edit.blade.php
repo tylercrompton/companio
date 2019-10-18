@@ -12,7 +12,7 @@
         <div class="form-group">
             {{-- The server will completely ignore this field. This is strictly for informational purposes, but the code is here should the functionality be desired later. --}}
             {!! Form::label('role', __('Role')) !!}
-            {!! Form::select('size', [\App\UserRole::admin => __('Administrator'), \App\UserRole::manager => __('Manager'), \App\UserRole::user => __('User')], \App\UserRole::manager, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::select('size', [\App\UserRole::admin => __('Administrator'), \App\UserRole::manager => __('Manager'), \App\UserRole::user => __('User')], null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
         </div>
 
         <div class="form-group">
