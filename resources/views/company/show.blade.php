@@ -20,7 +20,7 @@
         @isset($company->website)
             <div>
                 {!! \Octicons\Octicon::globe() !!}
-                <a href="{{ $company->website }}">{{ $company->website }}</a>
+                <a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a>
             </div>
         @endisset
 
