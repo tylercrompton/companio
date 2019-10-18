@@ -14,7 +14,7 @@
         <ul class="list-unstyled grid g-3">
             @foreach($companies as $company)
                 <li class="card text-center">
-                    <img class="card-img-top company-img align-self-center" src="{{ $company->logo_path ?? '/images/logo-default.png' }}" alt="{{ $company->name }} logo">
+                    <img class="card-img-top company-img align-self-center" src="{{ $company->logo_path ? Storage::url($company->logo_path) : '/images/logo-default.png' }}" alt="{{ $company->name }} logo">
                     <div class="card-body">
                         <p class="card-text">
                             @can('view', $company)

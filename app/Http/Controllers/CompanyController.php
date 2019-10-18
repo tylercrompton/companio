@@ -6,6 +6,7 @@ use App\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\UserRole;
+use Storage;
 
 class CompanyController extends Controller
 {
@@ -50,11 +51,17 @@ class CompanyController extends Controller
     {
         $validated = $request->validated();
 
+        $logo_path = null;
+
+        if ($request->hasFile('logo')) {
+            $logo_path = $request->file('logo')->store('public');
+        }
+
         $company = Company::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'website' => $validated['website'],
-            // TODO: logo
+            'logo_path' => $logo_path,
         ]);
 
         return redirect()->route('companies.show', compact('company'));
@@ -105,7 +112,14 @@ class CompanyController extends Controller
             $company->website = $validated['website'];
         }
 
-        // TODO: logo
+        if ($request->hasFile('logo')) {
+            if (!is_null($company->logo_path)) {
+                // We don't particularly care if this fails, so we'll just suppress any errors pertaining to this.
+                @Storage::delete($company->logo_path);
+            }
+
+            $company->logo_path = $request->file('logo')->store('public');
+        }
 
         $company->save();
 

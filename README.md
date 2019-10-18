@@ -56,11 +56,15 @@ Next, generate an application key as follows:
 
     (ssh) $ php artisan key:generate
 
-After that, run the migrations and seed the database.
+After that, create a symbolic link as follows:
+
+    (ssh) $ ln -s ../storage/app/public public/storage
+
+Then, run the migrations and seed the database.
 
     (ssh) $ php artisan migrate --seed
 
-After that, install the Node.js modules.
+Next, install the Node.js modules.
 
     (ssh) $ npm install
 
