@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Employee;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCompanyEmployeeRequest;
+use App\Http\Requests\UpdateCompanyEmployeeRequest;
 
 class CompanyEmployeeController extends Controller
 {
@@ -43,13 +44,23 @@ class CompanyEmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  StoreCompanyEmployeeRequest  $request
      * @param  Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Company $company)
+    public function store(StoreCompanyEmployeeRequest $request, Company $company)
     {
-        //
+        $validated = $request->validated();
+
+        $employee = Employee::create([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'company_id' => $company->id,
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+        ]);
+
+        return redirect()->route('companies.employees.show', compact('company', 'employee'));
     }
 
     /**
@@ -79,16 +90,37 @@ class CompanyEmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  UpdateCompanyEmployeeRequest  $request
      * @param  Company  $company
      * @param  Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company, Employee $employee)
+    public function update(UpdateCompanyEmployeeRequest $request, Company $company, Employee $employee)
     {
-        //
+        $validated = $request->validated();
+
+        if (array_key_exists('first_name', $validated) && !is_null($validated['first_name'])) {
+            $employee->first_name = $validated['first_name'];
+        }
+
+        if (array_key_exists('last_name', $validated) && !is_null($validated['last_name'])) {
+            $employee->last_name = $validated['last_name'];
+        }
+
+        if (array_key_exists('email', $validated)) {
+            $employee->email = $validated['email'];
+        }
+
+        if (array_key_exists('phone', $validated)) {
+            $employee->phone = $validated['phone'];
+        }
+
+        $employee->save();
+
+        return redirect()->route('companies.employees.show', compact('company', 'employee'));
     }
 
+    /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * Remove the specified resource from storage.
      *
@@ -98,6 +130,9 @@ class CompanyEmployeeController extends Controller
      */
     public function destroy(Company $company, Employee $employee)
     {
-        //
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $employee->delete();
+
+        return redirect()->route('companies.employees.index', compact('company'));
     }
 }

@@ -16,7 +16,7 @@ class StoreCompanyRequest extends FormRequest
         return [
             'name' => ['required', 'max:100'],
             'email' => ['nullable', 'max:254'],
-            'website' => ['nullable', 'url', 'max:256'],
+            'website' => ['nullable', 'max:256', 'url'],
             'logo' => ['nullable', 'file', 'image'], // TODO: validate image dimensions
         ];
     }
