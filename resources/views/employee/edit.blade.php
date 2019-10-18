@@ -12,7 +12,7 @@
                 [
                     'class' => 'form-control' . ($errors->any() ? ($errors->has('first_name') ? ' is-invalid' : ' is-valid') : ''),
                     'maxlength' => '30',
-                    'placeholder' => __('First Name'),
+                    'placeholder' => $employee->first_name,
                 ]
             ) !!}
             @if($errors->has('first_name'))
@@ -30,7 +30,7 @@
                 [
                     'class' => 'form-control' . ($errors->any() ? ($errors->has('last_name') ? ' is-invalid' : ' is-valid') : ''),
                     'maxlength' => '30',
-                    'placeholder' => __('Last Name'),
+                    'placeholder' => $employee->last_name,
                 ]
             ) !!}
             @if($errors->has('last_name'))
