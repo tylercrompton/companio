@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ __('Edit User') }}</h1>
 
-    {!! Form::model($user, ['route' => ['users.update', 'user' => $user]]) !!}
+    {!! Form::model($user, ['method' => 'put', 'route' => ['users.update', 'user' => $user]]) !!}
         <div class="form-group">
             {!! Form::label('name', __('Name')) !!}
             {!! Form::text('name', null, ['class' => 'form-control', 'maxlength' => '100', 'placeholder' => $user->name]) !!}
