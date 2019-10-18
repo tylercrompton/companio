@@ -20,8 +20,6 @@
             {!! Form::email('email', null, ['class' => 'form-control', 'maxlength' => '254', 'placeholder' => $user->email]) !!}
         </div>
 
-        <p class="form-group">Upon creation, the user will receive an email to set their password.</p>
-
         {!! Form::submit(__('Save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 @endsection
