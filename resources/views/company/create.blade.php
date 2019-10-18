@@ -21,7 +21,7 @@
 
         <div class="form-group">
             {!! Form::label('logo', __('Logo')) !!}
-            {!! Form::file('logo', ['class' => 'form-control-file']) !!}
+            {!! Form::file('logo', ['accept' => 'image/*', 'class' => 'form-control-file']) !!}
         </div>
 
         {!! Form::submit(__('Save'), ['class' => 'btn btn-primary']) !!}
