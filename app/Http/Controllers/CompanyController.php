@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Company;
 use App\Http\Requests\StoreCompanyRequest;
+use App\Http\Requests\UpdateCompanyRequest;
 use App\UserRole;
 
 class CompanyController extends Controller
@@ -86,15 +87,34 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpdateCompanyRequest  $request
      * @param  Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $validated = $request->validated();
+
+        if (array_key_exists('name', $validated) && !is_null($validated['name'])) {
+            $company->name = $validated['name'];
+        }
+
+        if (array_key_exists('email', $validated)) {
+            $company->email = $validated['email'];
+        }
+
+        if (array_key_exists('website', $validated)) {
+            $company->website = $validated['website'];
+        }
+
+        // TODO: logo
+
+        $company->save();
+
+        return redirect()->route('companies.show', compact('company'));
     }
 
+    /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * Remove the specified resource from storage.
      *
@@ -103,6 +123,9 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $company->delete();
+
+        return redirect()->route('companies.index');
     }
 }

@@ -30,3 +30,17 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app',
 // });
+
+const deleteForm = $('#deleteForm'),
+    confirmationModal = $('#confirmationModal'),
+    confirmationButton = $('#confirmationButton');
+
+confirmationButton.click(() => {
+    deleteForm.submit();
+});
+
+// deleteForm.submit(event => {
+//     event.preventDefault();
+//
+//     confirmationModal.modal();
+// });
