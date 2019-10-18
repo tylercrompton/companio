@@ -4,7 +4,7 @@
     <div class="d-flex flex-column align-items-center">
         <h1 class="text-center">{{ $company->name }}</h1>
 
-        <img class="company-img order--1" src="/images/logo-default.png" alt="{{ $company->name }} logo">
+        <img class="company-img order--1" src="{{ $company->logo_path ?? '/images/logo-default.png' }}" alt="{{ $company->name }} logo">
 
         @can('update', $company)
             <a href="{{ route('companies.edit', compact('company'), false) }}" class="btn btn-primary mb-3">{{ __('Edit') }}</a>
