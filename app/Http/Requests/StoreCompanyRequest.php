@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCompanyRequest extends FormRequest
 {
@@ -17,7 +18,7 @@ class StoreCompanyRequest extends FormRequest
             'name' => ['required', 'max:100'],
             'email' => ['nullable', 'max:254'],
             'website' => ['nullable', 'max:256', 'url'],
-            'logo' => ['nullable', 'file', 'image'], // TODO: validate image dimensions
+            'logo' => ['nullable', Rule::dimensions()->maxWidth(100)->maxHeight(100)],
         ];
     }
 }
